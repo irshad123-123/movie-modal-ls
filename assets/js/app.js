@@ -13,6 +13,14 @@ const movieContainer = document.getElementById('movieContainer')
 const addMovieBtn = document.getElementById('addMovieBtn')
 const updateMovieBtn = document.getElementById('updateMovieBtn')
 
+const snackBar = (msg, icon)=>{
+    Swal.fire({
+        title:msg,
+        icon:icon,
+        timer:2000
+    })
+}
+
 uuid = () => {
     return (
         String('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx')
@@ -75,13 +83,34 @@ const onClickEdit = (ele)=>{
 }
 
 const onClickRemove = (ele)=>{
-    let remove_Id = ele.closest('.card').id
+
+    Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+     let remove_Id = ele.closest('.card').id
     cl(remove_Id)
     let get_Index = movieArr.findIndex(f=>f.movieId == remove_Id)
     cl(get_Index)
     movieArr.splice(get_Index, 1)
     ele.closest('.col-md-3').remove()
     localStorage.setItem('movieArr', JSON.stringify(movieArr))
+    Swal.fire({
+      title: "Deleted!",
+      text: `Your ${remove_Id}  has been deleted.`,
+      icon: "success",
+      timer:2000
+    });
+  }
+});
+
+
 }
 
 const movieTemplating = (arr) => {
@@ -157,6 +186,7 @@ const onSubmitMovie = (eve) => {
                     </div>
                     </div>`
     movieContainer.append(div)
+    snackBar(`${obj.movieName} added successfully`, 'success')
 }
 
 movieForm.addEventListener('submit', onSubmitMovie)
@@ -181,6 +211,7 @@ const onUpdateMovie =(eve)=>{
     onShowModal()
     movieTemplating(movieArr)
 
+    snackBar(`${update_Obj.movieName} Update successfully`, 'success')
     
 }
 

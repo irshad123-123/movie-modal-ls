@@ -1,0 +1,129 @@
+:root{
+    --primary-color:rgb(229,9,20);
+    --color:white;
+    --primary-hover-color:rgb(146, 5, 12);
+    --sec-color:rgb(11, 10, 10);
+    --sec-hover-color:rgb(87, 84, 84);
+}
+.container{
+   max-width: 1280px;
+    position: relative;
+    /* left:20%; */
+    margin: 0 auto;
+    width:90%;
+}
+body::after {
+    content: '';
+    position: fixed;
+    background-image: linear-gradient(12deg,
+            rgba(0, 0, 0, 0.8500) 36.00%,
+            rgba(0, 0, 0, 0.8465) 40.58%,
+            rgba(0, 0, 0, 0.8361) 45.17%,
+            rgba(0, 0, 0, 0.8187) 49.75%,
+            rgba(0, 0, 0, 0.7944) 54.33%,
+            rgba(0, 0, 0, 0.7632) 58.92%,
+            rgba(0, 0, 0, 0.7250) 63.50%,
+            rgba(0, 0, 0, 0.6868) 68.08%,
+            rgba(0, 0, 0, 0.6556) 72.67%,
+            rgba(0, 0, 0, 0.6313) 77.25%,
+            rgba(0, 0, 0, 0.6139) 81.83%,
+            rgba(0, 0, 0, 0.6035) 86.42%,
+            rgba(0, 0, 0, 0.6000) 91.00%),
+        url("https://assets.nflxext.com/ffe/siteui/vlv3/3e4bd046-85a3-40e1-842d-fa11cec84349/web/IN-en-20250818-TRIFECTA-perspective_4bd1b66d-bbb6-4bc6-ba8f-ecbba53a1278_large.jpg");
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    object-fit: cover;
+    filter: blur(1px);
+    z-index: -1;
+}
+.logo{
+    height: 100%;
+    width: 250px;
+}
+.logo a svg{
+    height: 100%;
+    width: 100%;
+}
+.backDrop{
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: none;
+    animation: fadeIn 0.5s linear;
+    z-index: 10;
+}
+.movieModal{
+    position: absolute;
+    width: 50%;
+    left:25%;
+    display: none;
+    animation: downSlide 0.5s linear;
+    z-index: 11;
+}
+.backDrop.active, .movieModal.active{
+    display: block;
+}
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }  
+}
+@keyframes downSlide{
+    0%{
+        transform:translateY(-15px)
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+.card-header h4{
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.container-fluid .card{
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+    color:white;
+    margin-bottom: 20px;
+}
+.card-body .content{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+.card-body .content img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.card-body .content p{
+    top:30%;
+    height: 70%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    color:white;
+    padding: 10px;
+    transform: translateY(120%);
+    overflow-y: auto;
+    transition: all 0.5s linear;
+}
+.card-body .content:hover p{
+    transform: translateY(0)
+}
+.col-md-2 strong .rating{
+    width: 30px;
+}

@@ -1,0 +1,17 @@
+.nfx-pri-btn{
+    background-color: var(--primary-color);
+    color: var(--color);
+    transition: all 0.4s linear;
+}
+.nfx-pri-btn:is(:hover, :focus, :active){
+    background-color: var(--primary-hover-color);
+    color: var(--color);
+}
+.nfx-sec-btn{
+    background-color: var(--sec-color);
+    color: var(--color);
+}
+.nfx-sec-btn:is(:hover, :focus, :active){
+    background-color: var(--sec-color);
+    color: var(--color);
+}
